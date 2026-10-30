@@ -6,6 +6,7 @@
 target/
 build/
 out/
+tmp/
 
 # IDEs
 .idea/
