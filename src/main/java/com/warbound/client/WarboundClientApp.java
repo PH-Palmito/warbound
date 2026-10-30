@@ -1,5 +1,6 @@
 package com.warbound.client;
 
+import com.warbound.client.network.RmiGameClient;
 import com.warbound.shared.ActionType;
 import com.warbound.shared.Faction;
 import com.warbound.shared.dto.CardView;
@@ -8,7 +9,6 @@ import com.warbound.shared.dto.GameResult;
 import com.warbound.shared.dto.MatchView;
 import com.warbound.shared.dto.PlayerSession;
 import com.warbound.shared.dto.UnitView;
-import com.warbound.shared.remote.WarboundRemote;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -25,8 +25,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.util.UUID;
 
 public final class WarboundClientApp extends Application {
@@ -41,7 +39,7 @@ public final class WarboundClientApp extends Application {
     private final ListView<UnitView> ownBoardList = new ListView<>();
     private final ListView<UnitView> opponentBoardList = new ListView<>();
 
-    private WarboundRemote service;
+    private final RmiGameClient gameClient = new RmiGameClient();
     private PlayerSession session;
     private MatchView match;
 
@@ -83,7 +81,8 @@ public final class WarboundClientApp extends Application {
     private Button createButton() {
         Button button = new Button("Criar partida");
         button.setOnAction(event -> runSafely(() -> {
-            PlayerSession created = remote().createMatch(requiredName(), factionChoice.getValue());
+            connect();
+            PlayerSession created = gameClient.createMatch(requiredName(), factionChoice.getValue());
             session = created;
             matchIdField.setText(created.matchId().toString());
             refresh();
@@ -94,8 +93,9 @@ public final class WarboundClientApp extends Application {
     private Button joinButton() {
         Button button = new Button("Entrar na partida");
         button.setOnAction(event -> runSafely(() -> {
+            connect();
             UUID matchId = UUID.fromString(matchIdField.getText().trim());
-            session = remote().joinMatch(matchId, requiredName(), factionChoice.getValue());
+            session = gameClient.joinMatch(matchId, requiredName(), factionChoice.getValue());
             refresh();
         }));
         return button;
@@ -143,11 +143,12 @@ public final class WarboundClientApp extends Application {
 
     private void send(ActionType action, String sourceCardId, String targetUnitId) throws Exception {
         requireSession();
+        connect();
         GameCommand command = new GameCommand(
                 session.matchId(), session.playerId(), session.playerToken(), action,
                 sourceCardId, targetUnitId, match.version()
         );
-        GameResult result = remote().performAction(command);
+        GameResult result = gameClient.performAction(command);
         statusLabel.setText(result.message());
         if (result.match() != null) {
             showMatch(result.match());
@@ -156,15 +157,12 @@ public final class WarboundClientApp extends Application {
 
     private void refresh() throws Exception {
         requireSession();
-        showMatch(remote().getMatch(session.matchId(), session.playerId(), session.playerToken()));
+        connect();
+        showMatch(gameClient.getMatch(session.matchId(), session.playerId(), session.playerToken()));
     }
 
-    private WarboundRemote remote() throws Exception {
-        if (service == null) {
-            Registry registry = LocateRegistry.getRegistry(hostField.getText().trim(), 1099);
-            service = (WarboundRemote) registry.lookup(WarboundRemote.SERVICE_NAME);
-        }
-        return service;
+    private void connect() throws Exception {
+        gameClient.connect(hostField.getText());
     }
 
     private void showMatch(MatchView view) {

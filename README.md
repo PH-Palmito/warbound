@@ -41,3 +41,4 @@ mvn -q compile exec:java -Dexec.mainClass=com.warbound.server.ServerMain -Dexec.
 
 - [Entrega 1 - Introdução e arquitetura](docs/entrega-1-arquitetura.md)
 - [Relatório Word da Entrega 1](docs/relatorio/Warbound_Entrega_1.docx)
+- [Estrutura de backend e frontend](docs/estrutura-do-projeto.md)
