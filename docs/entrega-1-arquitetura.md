@@ -4,9 +4,9 @@
 
 ### 1.1 Descrição do jogo
 
-**Warbound** é um card game multiplayer estratégico para dois jogadores. Cada participante escolhe uma civilização histórica - inicialmente Romanos, Samurais ou Vikings - e utiliza um baralho temático formado por unidades, táticas e líderes.
+**Warbound** é um card game multiplayer estratégico para dois jogadores. Cada participante escolhe uma civilização histórica - inicialmente Cavaleiro , Samurais ou Vikings - e utiliza um baralho temático formado por unidades, táticas e líderes.
 
-Cada jogador controla um comandante com 20 pontos de vida. No próprio turno, recebe recursos, pode baixar unidades, usar táticas, declarar ataques e encerrar o turno. A partida termina quando a vida do comandante adversário chega a zero ou quando outra condição de fim definida pelas regras for atingida.
+Cada jogador controla três cartas com 100 pontos de vida. No próprio turno, recebe recursos, pode baixar unidades, usar táticas, declarar decisões e encerrar o turno. A partida termina quando o jogador perde três cartas de personagem quando outra condição de fim definida pelas regras for atingida.
 
 Uma jogada é uma ação encaminhada ao servidor, como jogar uma carta, atacar, escolher um alvo, ativar um efeito ou encerrar o turno. O servidor é a autoridade do jogo: somente ele valida custo, turno, carta, alvo e efeitos antes de modificar o estado oficial da partida.
 
