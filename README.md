@@ -18,6 +18,8 @@ O projeto já contém um servidor RMI, uma interface remota, estado de partida p
 O pacote inclui o front visual JavaFX conectado ao backend RMI, além dos
 arquivos `.bat` para iniciar o servidor e os clientes. Requer JDK 17+ e
 internet na primeira execução para baixar Maven e as dependências.
+O front v4 adiciona uma cena de batalha 3D no Menu e modelos 3D exploráveis
+na tela de detalhes das cartas. O pacote inclui os recursos gráficos e sons.
 
 1. Baixe e extraia [Warbound-para-faculdade.zip](Warbound-para-faculdade.zip).
 2. Execute `iniciar-servidor.bat` e pressione Enter para partidas neste PC.
