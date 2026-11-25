@@ -13,6 +13,17 @@ Card game multiplayer de povos históricos, como Romanos, Samurais e Vikings.
 
 O projeto já contém um servidor RMI, uma interface remota, estado de partida para dois jogadores e uma tela JavaFX inicial. A primeira versão permite criar ou entrar em uma partida, baixar unidades, atacar unidades ou o comandante adversário e encerrar o turno.
 
+## Pacote integrado para Windows
+
+O pacote inclui o front visual JavaFX conectado ao backend RMI, além dos
+arquivos `.bat` para iniciar o servidor e os clientes. Requer JDK 17+ e
+internet na primeira execução para baixar Maven e as dependências.
+
+1. Baixe e extraia [Warbound-para-faculdade.zip](Warbound-para-faculdade.zip).
+2. Execute `iniciar-servidor.bat` e pressione Enter para partidas neste PC.
+3. Abra duas instâncias de `executar-front.bat`; crie a partida na primeira
+   e entre pelo código UUID na segunda.
+
 ### Executar localmente
 
 Pré-requisitos: JDK 17+ e Maven 3.9+.
