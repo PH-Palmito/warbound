@@ -5,11 +5,13 @@ import com.warbound.shared.dto.GameCommand;
 import com.warbound.shared.dto.GameResult;
 import com.warbound.shared.dto.MatchView;
 import com.warbound.shared.dto.PlayerSession;
+import com.warbound.shared.dto.OpenMatchView;
 import com.warbound.shared.remote.WarboundRemote;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.UUID;
+import java.util.List;
 
 /**
  * Adaptador de rede do frontend. A interface JavaFX não conhece detalhes de Registry ou Stub RMI.
@@ -34,6 +36,10 @@ public final class RmiGameClient {
 
     public PlayerSession joinMatch(UUID matchId, String playerName, Faction faction) throws Exception {
         return service().joinMatch(matchId, playerName, faction);
+    }
+
+    public List<OpenMatchView> listOpenMatches() throws Exception {
+        return service().listOpenMatches();
     }
 
     public MatchView getMatch(UUID matchId, UUID playerId, String playerToken) throws Exception {

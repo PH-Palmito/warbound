@@ -1,0 +1,959 @@
+/*
+ * Warbound - folha de estilo global (design system)
+ *
+ * Paleta, tipografia, molduras por facção e componentes definidos uma
+ * única vez aqui. As quatro telas só combinam estas classes.
+ *
+ * Direção visual (respostas do questionário de identidade):
+ *  - floresta medieval em plena batalha; épico, mas com os pés no chão;
+ *  - ornamentada como Gwent, sem poluir a leitura;
+ *  - facções diferenciadas pela cor: Templários amarelo, Orientais
+ *    vermelho, Nórdicos azul;
+ *  - molduras: Templários = ouro nobre; Orientais = madeira de arquitetura
+ *    japonesa; Nórdicos = metal e pedra;
+ *  - nome do jogo em bronze envelhecido, tipografia medieval e robusta
+ *    (MedievalSharp). Textos corridos pequenos usam Georgia para ficar legíveis.
+ */
+
+.root {
+    /* --- cores por função --- */
+    -color-bg: #0a0f0e;                      /* fundo (floresta à noite) */
+    -color-panel: rgba(14, 11, 8, 0.90);    /* superfície: couro escuro, translúcida */
+    -color-panel-solid: #1b1610;
+    -color-line: #6b5230;                    /* linha de painel: bronze escuro */
+    -color-bronze: #9c814e;
+    -color-bronze-light: #b29b75;            /* destaque */
+    -color-bronze-aged: #756449;             /* cor do nome "Warbound" */
+
+    -color-text: #efe4cc;                    /* texto principal */
+    -color-text-2: #b9ab8e;                  /* texto secundário */
+    -color-ink: #1d1308;                     /* texto sobre bronze */
+
+    -color-danger: #77413c;                  /* ação perigosa */
+    -color-success: #596841;
+    -color-warning: #a3854a;
+
+    /* --- facções (diferenciação só por cor, decisão do projeto) --- */
+    -color-templarios: #b8942a;
+    -color-orientais: #9a3128;
+    -color-nordicos: #3f6a9a;
+
+    -fx-base: #1b1610;
+    -fx-background: #0e1514;
+    -fx-text-base-color: #efe4cc;
+    -fx-background-color: -color-bg;
+    -fx-font-family: "Georgia", "Times New Roman", serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: -color-text;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.label {
+    -fx-text-fill: -color-text;
+}
+
+.screen-root {
+    -fx-background-color: transparent;
+}
+
+/* ================= Cenário (FundoFloresta) ================= */
+
+.forest-base { -fx-background-color: #070b0b; }
+.forest-dim { -fx-background-color: #04090a; }
+.forest-vignette {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 72%, transparent 45%, rgba(0, 0, 0, 0.62) 100%);
+}
+
+/* ================= Tipografia ================= */
+
+.screen-title {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 22px;
+    -fx-text-fill: -color-text;
+}
+.section-title {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 20px;
+    -fx-text-fill: -color-bronze-light;
+}
+.section-label {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-bronze-light;
+}
+.modal-title {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 25px;
+    -fx-text-fill: -color-text;
+}
+.tagline {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 17px;
+    -fx-text-fill: -color-text-2;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 6, 0.5, 0, 1);
+}
+.text-secondary {
+    -fx-text-fill: -color-text-2;
+    -fx-font-size: 12px;
+}
+.text-body {
+    -fx-text-fill: -color-text;
+    -fx-font-size: 13px;
+}
+.hint-text {
+    -fx-text-fill: #d8c89c;
+    -fx-font-size: 12.5px;
+    -fx-font-style: italic;
+}
+.wait-title {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 32px;
+    -fx-text-fill: -color-text;
+}
+.code-plate {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 40px;
+    -fx-text-fill: -color-bronze-light;
+    -fx-padding: 8 40 8 40;
+    -fx-background-color: -color-line, rgba(12, 9, 6, 0.92);
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 6, 5;
+}
+
+.faction-text-templarios { -fx-text-fill: -color-templarios; }
+.faction-text-orientais  { -fx-text-fill: -color-orientais; }
+.faction-text-nordicos   { -fx-text-fill: #7598be; }
+
+/* ================= Painéis e cabeçalho ================= */
+
+.panel {
+    -fx-background-color: -color-line, -color-panel;
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 5, 4;
+    -fx-padding: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.55), 12, 0.2, 0, 3);
+}
+
+.filter-bar { -fx-padding: 10 14 10 14; }
+
+.app-header {
+    -fx-background-color: linear-gradient(to bottom, rgba(10, 8, 6, 0.94), rgba(24, 19, 13, 0.90));
+}
+.header-divider {
+    -fx-background-color: -color-line;
+    -fx-min-width: 1px;
+    -fx-pref-width: 1px;
+    -fx-max-width: 1px;
+    -fx-min-height: 26px;
+    -fx-pref-height: 26px;
+    -fx-max-height: 26px;
+}
+/* faixa de 3 cores: amarelo, vermelho e azul das facções */
+.faction-strip {
+    -fx-background-color: linear-gradient(to right,
+        #b8942a 0%, #b8942a 33.3%, #9a3128 33.3%, #9a3128 66.6%, #3f6a9a 66.6%, #3f6a9a 100%);
+}
+.tri-bar-templarios { -fx-background-color: -color-templarios; }
+.tri-bar-orientais  { -fx-background-color: -color-orientais; }
+.tri-bar-nordicos   { -fx-background-color: -color-nordicos; }
+
+.menu-faction {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 5, 0.5, 0, 1);
+}
+
+/* ================= Botões ================= */
+
+.primary-button {
+    -fx-background-color:
+        #2a1d0b,
+        linear-gradient(to bottom, #c1ac83 0%, #9c814e 48%, #755f3b 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0) 50%);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 4, 3, 2;
+    -fx-text-fill: -color-ink;
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 15px;
+    -fx-padding: 8 22 8 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 6, 0.2, 0, 2);
+}
+.primary-button:hover {
+    -fx-background-color:
+        #2a1d0b,
+        linear-gradient(to bottom, #cdbb93 0%, #ad925a 48%, #856c42 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0) 50%);
+    -fx-effect: dropshadow(gaussian, rgba(184, 148, 42, 0.36), 8, 0.18, 0, 0);
+}
+.primary-button:pressed {
+    -fx-background-color:
+        #2a1d0b,
+        linear-gradient(to bottom, #806b3e, #6f4d14),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 60%);
+    -fx-padding: 9 22 7 22;
+}
+.primary-button:focused {
+    -fx-effect: dropshadow(gaussian, rgba(245, 220, 150, 0.52), 6, 0.27, 0, 0);
+}
+.primary-button:disabled { -fx-opacity: 0.4; -fx-cursor: default; -fx-effect: null; }
+
+.secondary-button {
+    -fx-background-color: -color-line, rgba(16, 12, 9, 0.82);
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 4, 3;
+    -fx-text-fill: #e6d6b0;
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 14px;
+    -fx-padding: 7 20 7 20;
+    -fx-cursor: hand;
+}
+.secondary-button:hover {
+    -fx-background-color: -color-bronze-light, rgba(36, 28, 18, 0.92);
+    -fx-text-fill: #f6e7bf;
+    -fx-effect: dropshadow(gaussian, rgba(178, 155, 117, 0.25), 6, 0.15, 0, 0);
+}
+.secondary-button:pressed {
+    -fx-background-color: -color-bronze-light, rgba(10, 8, 5, 0.95);
+    -fx-padding: 8 20 6 20;
+}
+.secondary-button:focused {
+    -fx-background-color: #cdbb93, rgba(24, 19, 12, 0.95);
+}
+.secondary-button:disabled { -fx-opacity: 0.4; -fx-cursor: default; }
+
+.danger-button {
+    -fx-background-color:
+        #2a0b08,
+        linear-gradient(to bottom, #a5635b, #77413c 55%, #5f1913),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 50%);
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 4, 3, 2;
+    -fx-text-fill: #fbeee6;
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 15px;
+    -fx-padding: 8 22 8 22;
+    -fx-cursor: hand;
+}
+.danger-button:hover { -fx-effect: dropshadow(gaussian, rgba(154, 49, 40, 0.39), 7, 0.18, 0, 0); }
+.danger-button:disabled { -fx-opacity: 0.4; -fx-cursor: default; }
+
+/* Menu e fim de turno: botões maiores (declarados depois para vencer a base) */
+.menu-button {
+    -fx-font-size: 20px;
+    -fx-padding: 12 26 12 26;
+}
+.menu-button:pressed { -fx-padding: 13 26 11 26; }
+.end-turn-button {
+    -fx-font-size: 17px;
+    -fx-padding: 11 22 11 22;
+}
+.end-turn-button:pressed { -fx-padding: 12 22 10 22; }
+
+/* ================= Selos de estado (cor nunca é o único indicador) ================= */
+
+.status-badge {
+    -fx-font-family: "Georgia", serif;
+    -fx-font-size: 9.5px;
+    -fx-font-weight: bold;
+    -fx-padding: 1 6 1 6;
+    -fx-background-radius: 8;
+}
+.status-badge-turn      { -fx-background-color: -color-bronze;  -fx-text-fill: -color-ink; }
+.status-badge-wait      { -fx-background-color: #3a3328;        -fx-text-fill: -color-text-2; }
+.status-badge-charging  { -fx-background-color: -color-warning; -fx-text-fill: -color-ink; }
+.status-badge-protected { -fx-background-color: #2f4a6b;        -fx-text-fill: #e4eefb; }
+.status-badge-fury      { -fx-background-color: -color-danger;  -fx-text-fill: #fbeee6; }
+.status-badge-reserve   { -fx-background-color: #4a4035;        -fx-text-fill: -color-text-2; }
+.status-badge-damage    { -fx-background-color: -color-danger;  -fx-text-fill: #fbeee6; }
+.status-badge-heal      { -fx-background-color: -color-success; -fx-text-fill: #f1f8e6; }
+.status-badge-buff      { -fx-background-color: -color-bronze-aged; -fx-text-fill: #fff3dc; }
+.status-badge-ready     { -fx-background-color: #50683d;        -fx-text-fill: #f1f8e6; }
+.status-badge-done      { -fx-background-color: #3d3a35;        -fx-text-fill: #a39c8c; }
+.status-badge-selected  { -fx-background-color: #cdbb93;        -fx-text-fill: -color-ink; }
+
+/* ================= Molduras por facção =================
+   Camadas de baixo para cima: contorno, material, vão escuro, filete, fundo.
+   O conteúdo fica a 9-11 px das bordas, sobre o fundo. */
+
+.moldura-templarios {
+    -fx-background-color:
+        #3a2a08,
+        linear-gradient(to bottom right, #fff1a8 0%, #b8942a 22%, #856e3b 50%, #c6b371 78%, #6d4f0e 100%),
+        #16110a,
+        linear-gradient(to bottom, #cfc086, #7e6a3a),
+        radial-gradient(center 50% 30%, radius 90%, #231b10, #120e09);
+    -fx-background-insets: 0, 1, 7, 8, 9.5;
+    -fx-background-radius: 8, 7, 3, 3, 2;
+}
+
+.moldura-orientais {
+    -fx-background-color:
+        #1a0f08,
+        linear-gradient(from 0px 0px to 7px 0px, repeat, #4a2c18 0%, #5e3a20 50%, #4a2c18 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.14), rgba(0, 0, 0, 0.38)),
+        #9a3128,
+        radial-gradient(center 50% 30%, radius 90%, #1f1712, #100c09);
+    -fx-background-insets: 0, 1, 1, 7, 8.5;
+    -fx-background-radius: 3, 3, 3, 1, 1;
+}
+
+.moldura-nordicos {
+    -fx-background-color:
+        #0b0e12,
+        linear-gradient(to bottom, #e3e9ee 0%, #8e99a3 20%, #4b545c 55%, #a9b3bb 85%, #626c75 100%),
+        #12161b,
+        #3f6a9a,
+        linear-gradient(from 0px 0px to 0px 26px, repeat, #2d343b 0%, #272d33 90%, #14181c 100%);
+    -fx-background-insets: 0, 1, 7, 8, 9.5;
+    -fx-background-radius: 6, 5, 2, 2, 1;
+}
+
+/* enfeites: losangos de ouro, vigas de madeira, rebites de aço */
+.orn-losango {
+    -fx-min-width: 9px; -fx-pref-width: 9px; -fx-max-width: 9px;
+    -fx-min-height: 9px; -fx-pref-height: 9px; -fx-max-height: 9px;
+    -fx-rotate: 45;
+    -fx-background-color: #3a2a08, linear-gradient(to bottom right, #fff3b0, #ab8e4b);
+    -fx-background-insets: 0, 1;
+}
+.orn-viga-topo {
+    -fx-min-height: 9px; -fx-pref-height: 9px; -fx-max-height: 9px;
+    -fx-background-color: #120a05, linear-gradient(to bottom, #684e3c, #3b2213), #9a3128;
+    -fx-background-insets: 0, 1 0 1 0, 7.5 3 0 3;
+    -fx-background-radius: 3 3 0 0, 2 2 0 0, 0;
+}
+.orn-viga-base {
+    -fx-min-height: 7px; -fx-pref-height: 7px; -fx-max-height: 7px;
+    -fx-background-color: #120a05, linear-gradient(to bottom, #5a3820, #2c190d);
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0 0 3 3, 0 0 2 2;
+}
+.orn-rebite {
+    -fx-min-width: 7px; -fx-pref-width: 7px; -fx-max-width: 7px;
+    -fx-min-height: 7px; -fx-pref-height: 7px; -fx-max-height: 7px;
+    -fx-background-radius: 4;
+    -fx-background-color: radial-gradient(center 35% 35%, radius 70%, #f4f7f9, #8a949d 60%, #2b3036);
+}
+
+/* realce da borda do nome da carta com a cor da facção */
+.moldura-templarios .card-nameplate { -fx-border-color: transparent transparent #b8942a transparent; -fx-border-width: 0 0 1 0; }
+.moldura-orientais  .card-nameplate { -fx-border-color: transparent transparent #9a3128 transparent; -fx-border-width: 0 0 1 0; }
+.moldura-nordicos   .card-nameplate { -fx-border-color: transparent transparent #3f6a9a transparent; -fx-border-width: 0 0 1 0; }
+
+/* ================= Carta ================= */
+
+.card-view {
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 10, 0.2, 0, 3);
+}
+.card-view:disabled { -fx-opacity: 0.55; }
+
+.card-view.moldura-templarios:hover { -fx-effect: dropshadow(gaussian, rgba(184, 148, 42, 0.44), 13, 0.18, 0, 0); }
+.card-view.moldura-orientais:hover  { -fx-effect: dropshadow(gaussian, rgba(154, 49, 40, 0.44), 13, 0.18, 0, 0); }
+.card-view.moldura-nordicos:hover   { -fx-effect: dropshadow(gaussian, rgba(63, 106, 154, 0.47), 13, 0.18, 0, 0); }
+
+.card-view.card-view-selected,
+.card-view.card-view-selected:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 240, 170, 0.52), 16, 0.33, 0, 0);
+}
+
+.card-nameplate {
+    -fx-padding: 2 4 3 4;
+    -fx-min-height: 22px;
+}
+.card-title {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 14.5px;
+    -fx-text-fill: #f6ecd0;
+    -fx-text-overrun: ellipsis;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.9), 2, 1, 0, 1);
+}
+.card-compact .card-nameplate { -fx-min-height: 18px; -fx-padding: 1 2 2 2; }
+.card-compact .card-title { -fx-font-size: 11.5px; }
+
+.card-meta {
+    -fx-font-size: 10px;
+    -fx-font-style: italic;
+    -fx-text-fill: -color-text-2;
+}
+.card-desc {
+    -fx-font-size: 10.5px;
+    -fx-text-fill: #dcd0b4;
+    -fx-line-spacing: 1;
+}
+
+/* discos de custo / ataque / vida */
+.orb {
+    -fx-alignment: center;
+    -fx-min-width: 32px; -fx-pref-width: 32px; -fx-max-width: 32px;
+    -fx-min-height: 32px; -fx-pref-height: 32px; -fx-max-height: 32px;
+    -fx-padding: 0;
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 13px;
+    -fx-text-fill: #fff7e3;
+    -fx-text-overrun: clip;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.3, 0, 1);
+}
+.orb-custo {
+    -fx-background-color: #2a1d0b, radial-gradient(center 35% 30%, radius 85%, #cdbb93, #9c814e 55%, #6f4d14);
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 16, 14.5;
+    -fx-text-fill: -color-ink;
+}
+.orb-atq {
+    -fx-background-color: #2b0907, radial-gradient(center 35% 30%, radius 85%, #be736d, #8a4843 55%, #5c120d);
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 16, 14.5;
+}
+.orb-hp {
+    -fx-background-color: #0f1f0a, radial-gradient(center 35% 30%, radius 85%, #88a26b, #4f683d 55%, #223d12);
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 16, 14.5;
+}
+.orb-small {
+    -fx-min-width: 24px; -fx-pref-width: 24px; -fx-max-width: 24px;
+    -fx-min-height: 24px; -fx-pref-height: 24px; -fx-max-height: 24px;
+    -fx-font-size: 10px;
+    -fx-background-radius: 12, 10.5;
+}
+.orb-caption {
+    -fx-font-size: 9.5px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-text-2;
+}
+
+/* emblema das cartas sem ilustração (Efeito e Busca) */
+.card-emblem {
+    -fx-background-color: radial-gradient(center 50% 45%, radius 80%, #2f271b, #120e09);
+    -fx-background-radius: 3;
+}
+.moldura-templarios .emblem-shape { -fx-fill: #b8942a; -fx-effect: dropshadow(gaussian, rgba(184, 148, 42, 0.36), 7, 0.18, 0, 0); }
+.moldura-orientais  .emblem-shape { -fx-fill: #b86861; -fx-effect: dropshadow(gaussian, rgba(154, 49, 40, 0.36), 7, 0.18, 0, 0); }
+.moldura-nordicos   .emblem-shape { -fx-fill: #7598be; -fx-effect: dropshadow(gaussian, rgba(63, 106, 154, 0.39), 7, 0.18, 0, 0); }
+.emblem-ring { -fx-fill: transparent; -fx-stroke-width: 4; }
+.emblem-handle { -fx-stroke-width: 5; -fx-stroke-line-cap: round; }
+.moldura-templarios .emblem-ring, .moldura-templarios .emblem-handle { -fx-stroke: #b8942a; }
+.moldura-orientais  .emblem-ring, .moldura-orientais  .emblem-handle { -fx-stroke: #b86861; }
+.moldura-nordicos   .emblem-ring, .moldura-nordicos   .emblem-handle { -fx-stroke: #7598be; }
+
+/* esmaecimento das bordas das ilustrações: dissolve a foto no fundo da moldura */
+.art-vignette {
+    -fx-background-color:
+        radial-gradient(center 50% 42%, radius 75%, transparent 52%, rgba(14, 11, 8, 0.80) 100%),
+        linear-gradient(to bottom, rgba(14, 11, 8, 0) 72%, rgba(14, 11, 8, 0.85) 100%);
+}
+
+/* ================= Vaga de personagem ================= */
+
+.character-slot {
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 9, 0.2, 0, 3);
+}
+.character-slot-empty {
+    -fx-background-color: rgba(10, 8, 6, 0.48);
+    -fx-border-color: -color-line;
+    -fx-border-style: dashed;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: default;
+    -fx-effect: null;
+}
+.character-slot-placeable {
+    -fx-border-color: -color-templarios;
+    -fx-cursor: hand;
+}
+.character-slot-empty.character-slot-selected {
+    -fx-background-color: rgba(184, 148, 42, 0.2);
+    -fx-border-style: solid;
+    -fx-border-color: #cdbb93;
+}
+.character-slot-reserve { -fx-opacity: 0.92; }
+.character-slot-attacked { -fx-opacity: 0.62; }
+.character-slot-can-attack { -fx-effect: dropshadow(gaussian, rgba(130, 174, 111, 0.41), 10, 0.21, 0, 0); }
+.character-slot-charging   { -fx-effect: dropshadow(gaussian, rgba(195, 162, 96, 0.41), 8, 0.18, 0, 0); }
+.character-slot-protected  { -fx-effect: dropshadow(gaussian, rgba(122, 156, 200, 0.47), 10, 0.21, 0, 0); }
+.character-slot-fury       { -fx-effect: dropshadow(gaussian, rgba(191, 103, 92, 0.50), 10, 0.24, 0, 0); }
+.character-slot.character-slot-selected {
+    -fx-effect: dropshadow(gaussian, rgba(255, 240, 170, 0.52), 13, 0.33, 0, 0);
+}
+
+.slot-name {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 12.5px;
+    -fx-text-fill: #f6ecd0;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.9), 2, 1, 0, 1);
+}
+
+/* barra de vida: a cor ajuda, o número "HP x/y" garante a leitura */
+.hp-track {
+    -fx-background-color: #0c0a08, #2a241c;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 3, 2;
+}
+.hp-fill { -fx-background-radius: 3; }
+.hp-fill-alto  { -fx-background-color: linear-gradient(to bottom, #88a26b, #4f683d); }
+.hp-fill-medio { -fx-background-color: linear-gradient(to bottom, #bea463, #8e743f); }
+.hp-fill-baixo { -fx-background-color: linear-gradient(to bottom, #be736d, #773b37); }
+.hp-text {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(one-pass-box, rgba(0, 0, 0, 0.95), 2, 1, 0, 1);
+}
+
+/* ================= Placa do jogador ================= */
+
+.player-plaque { -fx-padding: 10px; }
+.plaque-name { -fx-font-family: "MedievalSharp"; -fx-font-size: 17px; -fx-text-fill: -color-text; }
+.plaque-faction { -fx-font-family: "MedievalSharp"; -fx-font-size: 13px; }
+.plaque-stat { -fx-font-size: 12px; -fx-text-fill: -color-text-2; }
+
+.life-pip {
+    -fx-min-width: 11px; -fx-pref-width: 11px; -fx-max-width: 11px;
+    -fx-min-height: 11px; -fx-pref-height: 11px; -fx-max-height: 11px;
+    -fx-rotate: 45;
+    -fx-background-color: #2a1d0b, linear-gradient(to bottom right, #cdbb93, #9c814e);
+    -fx-background-insets: 0, 1;
+}
+.life-pip-lost {
+    -fx-background-color: #4a3a22, #1a1510;
+    -fx-background-insets: 0, 1.5;
+}
+.res-seg {
+    -fx-min-width: 14px; -fx-pref-width: 14px; -fx-max-width: 14px;
+    -fx-min-height: 7px; -fx-pref-height: 7px; -fx-max-height: 7px;
+    -fx-background-color: #2a241c;
+    -fx-background-radius: 1;
+}
+.res-seg-on { -fx-background-color: linear-gradient(to bottom, #cdbb93, #9c814e); }
+
+/* ================= Tabuleiro e turno ================= */
+
+.board-mat {
+    -fx-background-color: rgba(6, 10, 9, 0.38);
+    -fx-background-radius: 8;
+    -fx-border-color: rgba(136, 115, 82, 0.35);
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 8;
+}
+.turn-status {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 19px;
+    -fx-text-fill: -color-text;
+}
+.turn-banner {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 54px;
+    -fx-padding: 14 90 14 90;
+    -fx-background-color: linear-gradient(to right, transparent, rgba(10, 8, 6, 0.88) 18%, rgba(10, 8, 6, 0.88) 82%, transparent);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 12, 0.4, 0, 0);
+}
+.turn-banner-mine   { -fx-text-fill: #cfc086; }
+.turn-banner-theirs { -fx-text-fill: #d9d2c0; }
+
+/* ================= Efeitos de combate ================= */
+
+.fx-floating-text {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 32px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.95), 4, 0.8, 0, 1);
+}
+.fx-dano     { -fx-text-fill: #d9867b; }
+.fx-cura     { -fx-text-fill: #9bc57d; }
+.fx-protecao { -fx-text-fill: #9ab4d9; -fx-font-size: 19px; }
+
+.fx-flash-dano     { -fx-background-color: rgba(187, 88, 82, 0.55); -fx-background-radius: 6; }
+.fx-flash-cura     { -fx-background-color: rgba(123, 178, 107, 0.40); -fx-background-radius: 6; }
+.fx-flash-protecao { -fx-background-color: rgba(121, 154, 204, 0.45); -fx-background-radius: 6; }
+.fx-flash-entrada  { -fx-background-color: rgba(217, 203, 153, 0.45); -fx-background-radius: 6; }
+
+.fx-slash {
+    -fx-background-color: linear-gradient(to bottom, transparent, #ffffff 40%, #ffd9d0 60%, transparent);
+    -fx-background-radius: 3;
+    -fx-effect: dropshadow(gaussian, rgba(217, 142, 126, 0.50), 5, 0.30, 0, 0);
+}
+
+/* ================= Janela modal e mensagens ================= */
+
+.modal-overlay { -fx-background-color: rgba(5, 4, 3, 0.74); }
+.modal-box {
+    -fx-background-color: -color-bronze-aged, #1b1610;
+    -fx-background-insets: 0, 2;
+    -fx-background-radius: 7, 6;
+    -fx-padding: 26;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 24, 0.3, 0, 6);
+}
+
+.feedback-message {
+    -fx-padding: 6 14 6 14;
+    -fx-background-radius: 4;
+    -fx-font-size: 12.5px;
+}
+.feedback-message-info    { -fx-background-color: rgba(28, 22, 15, 0.92);  -fx-text-fill: -color-text; }
+.feedback-message-success { -fx-background-color: rgba(70, 95, 38, 0.92);  -fx-text-fill: #f1f8e6; }
+.feedback-message-error   { -fx-background-color: rgba(119, 65, 60, 0.94); -fx-text-fill: #fbeee6; }
+
+/* ================= Listas ================= */
+
+.list-view {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.list-view-flat, .list-view-flat .viewport { -fx-background-color: transparent; }
+.list-view .placeholder .label { -fx-text-fill: -color-text-2; }
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-text;
+    -fx-font-size: 12.5px;
+    -fx-padding: 7 10 7 10;
+}
+.list-cell:odd { -fx-background-color: rgba(255, 255, 255, 0.03); }
+.list-cell:filled:hover { -fx-background-color: rgba(156, 129, 78, 0.20); }
+.list-cell:filled:selected,
+.list-cell:filled:selected:hover {
+    -fx-background-color: rgba(156, 129, 78, 0.42);
+    -fx-text-fill: #fff1cf;
+}
+.sala-cell-templarios { -fx-border-color: transparent transparent transparent #b8942a; -fx-border-width: 0 0 0 4; }
+.sala-cell-orientais  { -fx-border-color: transparent transparent transparent #9a3128; -fx-border-width: 0 0 0 4; }
+.sala-cell-nordicos   { -fx-border-color: transparent transparent transparent #3f6a9a; -fx-border-width: 0 0 0 4; }
+
+/* ================= Rolagem ================= */
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.scroll-pane > .viewport { -fx-background-color: transparent; }
+.scroll-pane > .corner { -fx-background-color: transparent; }
+.scroll-bar:vertical, .scroll-bar:horizontal { -fx-background-color: transparent; }
+.scroll-bar:vertical { -fx-pref-width: 10px; }
+.scroll-bar .track {
+    -fx-background-color: rgba(0, 0, 0, 0.28);
+    -fx-background-radius: 5;
+    -fx-border-color: transparent;
+}
+.scroll-bar .thumb {
+    -fx-background-color: -color-line;
+    -fx-background-radius: 5;
+    -fx-background-insets: 1;
+}
+.scroll-bar .thumb:hover { -fx-background-color: -color-bronze-aged; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
+}
+
+/* ================= Filtros (ToggleButton) ================= */
+
+.filter-label {
+    -fx-font-family: "MedievalSharp";
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-bronze-light;
+}
+.filter-toggle {
+    -fx-background-color: #4a3a22, rgba(18, 14, 10, 0.82);
+    -fx-background-insets: 0, 1.2;
+    -fx-background-radius: 14, 13;
+    -fx-text-fill: -color-text-2;
+    -fx-font-size: 12px;
+    -fx-padding: 4 15 4 15;
+    -fx-cursor: hand;
+}
+.filter-toggle:hover {
+    -fx-background-color: -color-bronze-light, rgba(36, 28, 18, 0.92);
+    -fx-text-fill: -color-text;
+}
+.filter-toggle:selected {
+    -fx-background-color: #cdbb93, #9c814e;
+    -fx-text-fill: -color-ink;
+    -fx-font-weight: bold;
+}
+.filter-toggle-templarios:selected { -fx-background-color: #fff1a8, #b8942a; -fx-text-fill: -color-ink; }
+.filter-toggle-orientais:selected  { -fx-background-color: #cc948e, #9a3128; -fx-text-fill: #fff2ee; }
+.filter-toggle-nordicos:selected   { -fx-background-color: #96b2ce, #3f6a9a; -fx-text-fill: #f2f8ff; }
+
+/* ================= Campos, lista suspensa, separador, dica ================= */
+
+.text-field {
+    -fx-background-color: -color-line, #120e0a;
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 4, 3;
+    -fx-text-fill: -color-text;
+    -fx-prompt-text-fill: #7d725c;
+    -fx-highlight-fill: #8f7449;
+    -fx-highlight-text-fill: -color-ink;
+    -fx-padding: 7 10 7 10;
+}
+.text-field:focused {
+    -fx-background-color: -color-bronze-light, #120e0a;
+}
+
+.combo-box-base {
+    -fx-background-color: -color-line, #120e0a;
+    -fx-background-insets: 0, 1.5;
+    -fx-background-radius: 4, 3;
+}
+.combo-box-base:hover, .combo-box-base:focused { -fx-background-color: -color-bronze-light, #120e0a; }
+.combo-box-base .arrow-button { -fx-background-color: transparent; }
+.combo-box-base .arrow { -fx-background-color: -color-bronze-light; }
+.combo-box .list-cell {
+    -fx-text-fill: -color-text;
+    -fx-background-color: transparent;
+    -fx-padding: 6 10 6 10;
+}
+.combo-box-popup > .list-view {
+    -fx-background-color: -color-line, #17120d;
+    -fx-background-insets: 0, 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 14, 0.3, 0, 4);
+}
+
+.separator .line {
+    -fx-border-color: #4a3a22 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.tooltip {
+    -fx-background-color: -color-line, #1b1610;
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 4, 3;
+    -fx-text-fill: -color-text;
+    -fx-font-family: "Georgia", serif;
+    -fx-font-size: 12px;
+    -fx-padding: 8 10 8 10;
+}
+
+/* ================= v3: vivacidade e contraste =================
+   Bloco no fim do arquivo: vence as regras anteriores. Mantém o tom medieval
+   realista (metal, couro, madeira, pedra), com cores de facção mais saturadas,
+   bordas mais nítidas e luz de tocha nos destaques. */
+
+.root {
+    -color-bg: #09100f;
+    -color-panel: rgba(14, 10, 7, 0.93);
+    -color-panel-solid: #201809;
+    -color-line: #8c754e;
+    -color-bronze: #b89a61;
+    -color-bronze-light: #d9c08f;
+    -color-bronze-aged: #9d7f53;
+    -color-text: #fff6df;
+    -color-text-2: #dccca4;
+    -color-templarios: #d9c165;
+    -color-orientais: #d9756c;
+    -color-nordicos: #78a9d9;
+    -color-success: #728c54;
+    -color-danger: #a55a53;
+    -color-warning: #cca35c;
+}
+
+/* textos e títulos com mais contraste */
+.screen-title, .modal-title, .wait-title {
+    -fx-text-fill: #fff6df;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.95), 10, 0.6, 0, 3);
+}
+.section-title, .section-label { -fx-text-fill: #d9c08f; }
+.tagline { -fx-text-fill: #f2e2b4; -fx-font-size: 18px; }
+.text-secondary { -fx-text-fill: #e0d2a8; }
+.hint-text { -fx-text-fill: #ffe9a6; }
+
+.faction-text-templarios { -fx-text-fill: #d9c165; -fx-effect: dropshadow(gaussian, rgba(217, 186, 98, 0.28), 5, 0.18, 0, 0); }
+.faction-text-orientais  { -fx-text-fill: #d97e74; -fx-effect: dropshadow(gaussian, rgba(195, 96, 91, 0.28), 5, 0.18, 0, 0); }
+.faction-text-nordicos   { -fx-text-fill: #88b2d9; -fx-effect: dropshadow(gaussian, rgba(105, 149, 204, 0.28), 5, 0.18, 0, 0); }
+
+/* painéis: borda de metal mais nítida e sombra de profundidade */
+.panel {
+    -fx-background-color: linear-gradient(to bottom, #b49c6c, #6e4f1e), rgba(14, 10, 7, 0.93);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.8), 18, 0.35, 0, 5);
+}
+.app-header {
+    -fx-background-color: linear-gradient(to bottom, rgba(24, 16, 8, 0.97), rgba(44, 29, 13, 0.94));
+}
+
+/* botões: brilho de tocha no foco e no hover */
+.primary-button:hover { -fx-effect: dropshadow(gaussian, rgba(217, 189, 126, 0.50), 11, 0.24, 0, 0); }
+.primary-button:focused { -fx-effect: dropshadow(gaussian, rgba(255, 235, 170, 0.55), 8, 0.30, 0, 0); }
+.secondary-button { -fx-text-fill: #fff0cc; }
+.secondary-button:hover {
+    -fx-text-fill: #fff8e4;
+    -fx-effect: dropshadow(gaussian, rgba(217, 192, 143, 0.39), 8, 0.21, 0, 0);
+}
+
+/* selos de estado: cores mais vivas, texto continua como indicador */
+.status-badge-turn      { -fx-background-color: #d9c08f; -fx-text-fill: #1d1308; }
+.status-badge-protected { -fx-background-color: #51749c; -fx-text-fill: #eef6ff; }
+.status-badge-fury      { -fx-background-color: #b66058; -fx-text-fill: #fff3ee; }
+.status-badge-ready     { -fx-background-color: #628345; -fx-text-fill: #f4ffe6; }
+
+/* molduras: gradientes mais ricos (mesmas camadas e insets da versão anterior) */
+.moldura-templarios {
+    -fx-background-color:
+        #4a3407,
+        linear-gradient(to bottom right, #fff6b8 0%, #d9c165 22%, #9c8145 50%, #d9c986 78%, #68532d 100%),
+        #1c1408,
+        linear-gradient(to bottom, #d9cd98, #9d8348),
+        radial-gradient(center 50% 30%, radius 90%, #2c2010, #15100a);
+}
+.moldura-orientais {
+    -fx-background-color:
+        #220f06,
+        linear-gradient(from 0px 0px to 7px 0px, repeat, #6a3c1c 0%, #71543f 50%, #6a3c1c 100%),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.4)),
+        #d9756c,
+        radial-gradient(center 50% 30%, radius 90%, #2a1a12, #130b07);
+}
+.moldura-nordicos {
+    -fx-background-color:
+        #0a0f16,
+        linear-gradient(to bottom, #f4fbff 0%, #a7b6c4 20%, #5a6672 55%, #c4d0da 85%, #7a8792 100%),
+        #10161e,
+        #78a9d9,
+        linear-gradient(from 0px 0px to 0px 26px, repeat, #34404c 0%, #2a333d 90%, #151b22 100%);
+}
+
+/* nome da carta em faixa tingida pela facção */
+.moldura-templarios .card-nameplate {
+    -fx-background-color: linear-gradient(to bottom, rgba(217, 193, 101, 0.45), rgba(60, 40, 8, 0.9));
+    -fx-border-color: transparent transparent #d9c165 transparent; -fx-border-width: 0 0 2 0;
+}
+.moldura-orientais .card-nameplate {
+    -fx-background-color: linear-gradient(to bottom, rgba(217, 117, 108, 0.45), rgba(50, 12, 8, 0.9));
+    -fx-border-color: transparent transparent #d9756c transparent; -fx-border-width: 0 0 2 0;
+}
+.moldura-nordicos .card-nameplate {
+    -fx-background-color: linear-gradient(to bottom, rgba(120, 169, 217, 0.45), rgba(10, 30, 55, 0.9));
+    -fx-border-color: transparent transparent #78a9d9 transparent; -fx-border-width: 0 0 2 0;
+}
+
+/* cartas: aura da facção em repouso e brilho maior ao passar o mouse */
+.card-view.moldura-templarios { -fx-effect: dropshadow(gaussian, rgba(217, 193, 101, 0.25), 10, 0.15, 0, 0); }
+.card-view.moldura-orientais  { -fx-effect: dropshadow(gaussian, rgba(217, 117, 108, 0.25), 10, 0.15, 0, 0); }
+.card-view.moldura-nordicos   { -fx-effect: dropshadow(gaussian, rgba(120, 169, 217, 0.25), 10, 0.15, 0, 0); }
+.card-view.moldura-templarios:hover { -fx-effect: dropshadow(gaussian, rgba(217, 193, 101, 0.52), 18, 0.21, 0, 0); }
+.card-view.moldura-orientais:hover  { -fx-effect: dropshadow(gaussian, rgba(217, 117, 108, 0.52), 18, 0.21, 0, 0); }
+.card-view.moldura-nordicos:hover   { -fx-effect: dropshadow(gaussian, rgba(120, 169, 217, 0.52), 18, 0.21, 0, 0); }
+.card-view.card-view-selected,
+.card-view.card-view-selected:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 250, 200, 0.55), 20, 0.36, 0, 0);
+}
+
+/* vagas de personagem: estados mais fortes e legíveis */
+.character-slot-empty {
+    -fx-background-color: rgba(10, 8, 6, 0.55);
+    -fx-border-color: #9a8259;
+}
+.character-slot-placeable { -fx-border-color: #d9c165; -fx-border-width: 2; }
+.character-slot-can-attack { -fx-effect: dropshadow(gaussian, rgba(159, 217, 137, 0.52), 13, 0.27, 0, 0); }
+.character-slot-charging   { -fx-effect: dropshadow(gaussian, rgba(217, 175, 109, 0.52), 12, 0.24, 0, 0); }
+.character-slot-protected  { -fx-effect: dropshadow(gaussian, rgba(137, 175, 217, 0.55), 13, 0.27, 0, 0); }
+.character-slot-fury       { -fx-effect: dropshadow(gaussian, rgba(217, 115, 103, 0.55), 14, 0.30, 0, 0); }
+.character-slot.character-slot-selected {
+    -fx-effect: dropshadow(gaussian, rgba(255, 250, 200, 0.55), 16, 0.36, 0, 0);
+}
+.board-mat {
+    -fx-background-color: rgba(4, 8, 8, 0.5);
+    -fx-border-color: rgba(195, 168, 118, 0.6);
+}
+
+/* efeitos de combate: números maiores e com contorno */
+.fx-floating-text {
+    -fx-font-size: 36px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1.0), 6, 0.9, 0, 2);
+}
+.fx-dano     { -fx-text-fill: #d9867b; }
+.fx-cura     { -fx-text-fill: #b0d98f; }
+.fx-protecao { -fx-text-fill: #a9d4ff; -fx-font-size: 22px; }
+.fx-flash-dano     { -fx-background-color: rgba(195, 91, 85, 0.6); -fx-background-radius: 6; }
+.fx-flash-cura     { -fx-background-color: rgba(140, 195, 118, 0.5); -fx-background-radius: 6; }
+.fx-flash-protecao { -fx-background-color: rgba(131, 167, 217, 0.55); -fx-background-radius: 6; }
+.fx-flash-entrada  { -fx-background-color: rgba(217, 200, 142, 0.55); -fx-background-radius: 6; }
+
+/* faixa de turno: mais contraste e brilho dourado */
+.turn-banner-mine   { -fx-text-fill: #d9c884; -fx-effect: dropshadow(gaussian, rgba(217, 186, 98, 0.33), 11, 0.24, 0, 0); }
+.turn-banner-theirs { -fx-text-fill: #e8e2d2; }
+
+
+/* =====================================================================
+ * HUD v5: cenário diurno (céu azul, castelo, floresta vibrante) e acabamento
+ * Regras no fim do arquivo: sobrepõem as anteriores sem apagá-las.
+ * ===================================================================== */
+
+.forest-base { -fx-background-color: #0b2a4a; }
+.forest-dim { -fx-background-color: #06182a; }
+.forest-vignette {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 78%, transparent 58%, rgba(4, 22, 40, 0.42) 100%);
+}
+
+/* Painéis: couro escuro com friso de bronze, brilho no topo e sombra azulada */
+.panel {
+    -fx-background-color:
+        linear-gradient(to bottom, #96815d, #6b5230),
+        linear-gradient(to bottom, rgba(36, 29, 20, 0.94), rgba(14, 11, 8, 0.94)),
+        linear-gradient(to bottom, rgba(217, 201, 159, 0.12), rgba(217, 201, 159, 0) 32%);
+    -fx-background-insets: 0, 1.5, 1.5;
+    -fx-background-radius: 8, 7, 7;
+    -fx-effect: dropshadow(gaussian, rgba(0, 14, 34, 0.60), 16, 0.22, 0, 4);
+}
+
+/* Cabeçalho com friso dourado */
+.app-header {
+    -fx-border-color: transparent transparent #9c814e transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-effect: dropshadow(gaussian, rgba(0, 14, 34, 0.55), 12, 0.2, 0, 3);
+}
+
+/* Tabuleiro: tapete esverdeado com moldura dourada em degradê */
+.board-mat {
+    -fx-background-color:
+        rgba(8, 26, 18, 0.52),
+        linear-gradient(to bottom, rgba(255, 235, 170, 0.08), rgba(0, 0, 0, 0.12));
+    -fx-background-insets: 0, 0;
+    -fx-background-radius: 12, 12;
+    -fx-border-color: linear-gradient(to bottom, rgba(205, 187, 147, 0.80), rgba(117, 100, 73, 0.45));
+    -fx-border-width: 1.5;
+    -fx-border-radius: 12;
+    -fx-effect: dropshadow(gaussian, rgba(0, 20, 40, 0.50), 24, 0.1, 0, 6);
+}
+
+/* Textos soltos sobre o cenário claro ganham sombra para manter a leitura */
+.tagline, .menu-faction, .hint-text, .screen-title, .section-title, .wait-title {
+    -fx-effect: dropshadow(gaussian, rgba(0, 16, 36, 0.92), 6, 0.55, 0, 1);
+}
+.turn-status {
+    -fx-effect: dropshadow(gaussian, rgba(205, 187, 147, 0.30), 6, 0.18, 0, 0);
+}
+
+/* Menu: placa suave atrás da logo e dos botões */
+.menu-plate {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 58%, rgba(6, 20, 36, 0.60), rgba(6, 20, 36, 0));
+}
+
+/* Vidas e recursos brilham */
+.life-pip {
+    -fx-effect: dropshadow(gaussian, rgba(205, 187, 147, 0.41), 4, 0.24, 0, 0);
+}
+.life-pip-lost { -fx-effect: null; }
+.res-seg-on {
+    -fx-effect: dropshadow(gaussian, rgba(205, 187, 147, 0.36), 3, 0.24, 0, 0);
+}
+
+/* Barras de vida com um leve reflexo */
+.hp-fill-alto  { -fx-effect: dropshadow(gaussian, rgba(136, 162, 107, 0.30), 3, 0.18, 0, 0); }
+.hp-fill-baixo { -fx-effect: dropshadow(gaussian, rgba(190, 115, 109, 0.36), 3, 0.18, 0, 0); }
+
+/* Faixa de turno: brilho dourado */
+.turn-banner-mine {
+    -fx-effect: dropshadow(gaussian, rgba(207, 192, 134, 0.52), 13, 0.27, 0, 0);
+}

@@ -15,6 +15,15 @@ public record PlayerView(
         int maxMana,
         int deckSize,
         int handSize,
-        List<UnitView> board
+        List<UnitView> board,
+        List<UnitView> reserve,
+        int discardSize,
+        int livesLost,
+        String activeGroupBuff
 ) implements Serializable {
+    public PlayerView(UUID playerId, String name, Faction faction, int commanderHealth, int mana,
+                      int maxMana, int deckSize, int handSize, List<UnitView> board) {
+        this(playerId, name, faction, commanderHealth, mana, maxMana, deckSize, handSize,
+                board, List.of(), 0, 0, null);
+    }
 }

@@ -12,6 +12,11 @@ public record GameCommand(
         ActionType action,
         String sourceCardId,
         String targetUnitId,
-        long expectedVersion
+        long expectedVersion,
+        String choiceCardId
 ) implements Serializable {
+    public GameCommand(UUID matchId, UUID playerId, String playerToken, ActionType action,
+                       String sourceCardId, String targetUnitId, long expectedVersion) {
+        this(matchId, playerId, playerToken, action, sourceCardId, targetUnitId, expectedVersion, null);
+    }
 }

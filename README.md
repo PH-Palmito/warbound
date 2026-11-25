@@ -1,57 +1,39 @@
 # Warbound
 
-Card game multiplayer de povos históricos, como Romanos, Samurais e Vikings.
+Jogo de cartas multiplayer para dois jogadores, com JavaFX no cliente e Java RMI no servidor.
 
-## Tecnologia definida
+Cada jogador usa o mesmo baralho de 27 cartas de personagens e feitiços, embaralhado de forma independente. A partida possui três vagas no campo, Reserva, descarte reciclável, grupos de três personagens da mesma facção e três vidas. Ambos os jogadores começam seu primeiro turno com 2 Recursos e com ao menos uma personagem básica de custo 2 na mão inicial.
 
-- Linguagem: Java 17+
-- Interface: JavaFX
-- Comunicação distribuída: Java RMI
-- Arquitetura: cliente-servidor com estado autoritativo no servidor
+## Requisitos
 
-## Protótipo inicial
+- JDK 17 ou superior;
+- conexão com a internet na primeira execução, para o Maven Wrapper baixar suas dependências.
 
-O projeto já contém um servidor RMI, uma interface remota, estado de partida para dois jogadores e uma tela JavaFX inicial. A primeira versão permite criar ou entrar em uma partida, baixar unidades, atacar unidades ou o comandante adversário e encerrar o turno.
+## Executar no Windows
 
-## Pacote integrado para Windows
+1. Execute `iniciar-servidor.bat` e pressione Enter para jogar neste computador. Para jogar pela rede local, informe o IP da máquina que está executando o servidor.
+2. Execute `executar-front.bat` duas vezes, uma para cada jogador.
+3. Na primeira janela, informe o nome e clique em **Criar partida**.
+4. Na segunda, use **Atualizar salas**, selecione a sala criada e clique em **Entrar na sala**.
 
-O pacote inclui o front visual JavaFX conectado ao backend RMI, além dos
-arquivos `.bat` para iniciar o servidor e os clientes. Requer JDK 17+ e
-internet na primeira execução para baixar Maven e as dependências.
-O front v4 adiciona uma cena de batalha 3D no Menu e modelos 3D exploráveis
-na tela de detalhes das cartas. O pacote inclui os recursos gráficos e sons.
+Também é possível informar o código da sala manualmente como alternativa.
 
-1. Baixe e extraia [Warbound-para-faculdade.zip](Warbound-para-faculdade.zip).
-2. Execute `iniciar-servidor.bat` e pressione Enter para partidas neste PC.
-3. Abra duas instâncias de `executar-front.bat`; crie a partida na primeira
-   e entre pelo código UUID na segunda.
+## Executar pelo terminal
 
-### Executar localmente
+Inicie o servidor:
 
-Pré-requisitos: JDK 17+ e Maven 3.9+.
-
-Em um terminal, inicie o servidor:
-
-```bash
-mvn -q compile exec:java -Dexec.mainClass=com.warbound.server.ServerMain
+```powershell
+.\mvnw.cmd compile exec:java "-Dexec.mainClass=com.warbound.server.ServerMain"
 ```
 
-Em dois outros terminais, abra os clientes:
+Em outros dois terminais, inicie um cliente em cada um:
 
-```bash
-mvn javafx:run
+```powershell
+.\mvnw.cmd javafx:run
 ```
 
-No primeiro cliente, informe o nome e o povo, clique em **Criar partida** e copie o identificador exibido no campo Partida. No segundo, informe nome, povo, cole esse identificador e clique em **Entrar na partida**.
+Para validar a compilação sem abrir o jogo:
 
-Para partidas entre duas máquinas da mesma rede, execute o servidor com o IP local como argumento e informe esse mesmo IP no campo Servidor de cada cliente:
-
-```bash
-mvn -q compile exec:java -Dexec.mainClass=com.warbound.server.ServerMain -Dexec.args="192.168.0.10"
+```powershell
+.\mvnw.cmd compile
 ```
-
-## Documentação
-
-- [Entrega 1 - Introdução e arquitetura](docs/entrega-1-arquitetura.md)
-- [Relatório Word da Entrega 1](docs/relatorio/Warbound_Entrega_1.docx)
-- [Estrutura de backend e frontend](docs/estrutura-do-projeto.md)
